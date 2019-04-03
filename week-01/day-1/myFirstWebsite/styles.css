@@ -1,0 +1,67 @@
+header{
+  background-color: #333333;
+  text-align: end;
+  
+}
+#menu{
+  background-image: url("assets/logo.svg");
+  background-position: left;
+  background-repeat: no-repeat;
+  text-align: end;
+  padding: 1pc 10pc 1pc 10pc;
+  width: 1000px
+}
+/* unvisited link */
+a:link {
+  padding: 1pc;
+}
+
+body {
+  background-image: url("assets/topography.png");
+  font-family: 'Courier New', Courier, monospace
+  }
+
+p {
+  text-align: justify;
+  font-size: 16pt
+}
+p.wiki {
+  text-align: justify;
+  font-size: 14pt
+}
+
+h1 {
+  letter-spacing: 8px;
+  font-size: 40pt ; 
+}
+#position {
+  letter-spacing: 10px;
+  font-size: 20pt;
+  color: #ff0099 
+}
+#introduction {
+  width: 1000px;
+  /* border: 25px solid green; */
+  padding: 2pc 10pc 0pc 10pc;
+  /* margin: 100px; */
+}
+#wiki {
+  width: 1000px;
+  /* border: 25px solid green; */
+  padding: 0pc 10pc 1pc 10pc;
+  /* margin: 100px; */
+}
+#separator{
+  text-align: center;
+  padding: 1pc;
+}
+
+/*   
+  h1 {
+    color: seagreen;
+    margin-left: 20px;
+  }
+
+  background-image: url("img_tree.png");
+  background-repeat: no-repeat;
+  background-position: right top; */
