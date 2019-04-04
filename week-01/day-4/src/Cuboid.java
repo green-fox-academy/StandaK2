@@ -8,9 +8,9 @@ public class Cuboid {
         // Surface Area: 600
         // Volume: 1000
 
-        double a = 5.2;
-        double b = 8.4;
-        double c = 3.7;
+        double a = 10;
+        double b = 20;
+        double c = 5;
 
         // S = 2* (ab + bc + ac)
         // V = a * b * c
