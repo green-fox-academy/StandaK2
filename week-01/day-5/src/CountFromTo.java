@@ -33,11 +33,9 @@ public class CountFromTo {
                     System.out.println(i);
                     numberCond = true;
                 }
+            } else {
+                System.out.println("Second number should be bigger, try it again!");
             }
-                else{
-                    System.out.println("Second number should be bigger, try it again!");
-                }
-            }
-
+        }
     }
 }

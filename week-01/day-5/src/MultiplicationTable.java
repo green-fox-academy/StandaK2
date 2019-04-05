@@ -27,6 +27,6 @@ public class MultiplicationTable {
         for (int i = 1; i < 11; i++) {
             int multi = i * number;
             System.out.println(i + " * " + number + " = " + multi);
-            }
+        }
     }
 }
