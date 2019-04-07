@@ -13,15 +13,16 @@ public class GuessTheNumber {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Want to play a guess game? Tell me a number I am thinking about (1-20): ");
 
         int lowInterval = 1;
         int highInterval = 50;
+
+        System.out.println("Want to play a guess game? Tell me a number I am thinking about ("
+                + lowInterval + " - " + highInterval + "): ");
         int inputNumber = 0;
         Random random = new Random();
         // Obtain a number between [0 - highInterval].
-        int randomNumber = random.nextInt(highInterval);
-        int guessNumber = randomNumber + 1;
+        int guessNumber = random.nextInt(highInterval) + 1;
 
         while (inputNumber != guessNumber) {
             inputNumber = scanner.nextInt();
