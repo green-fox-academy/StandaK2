@@ -2,18 +2,17 @@
 // square like this:
 //
 //
-// %%%%%%
-// %    %
-// %    %
-// %    %
-// %    %
-// %%%%%%
+// %%%%%
+// %%  %
+// % % %
+// %  %%
+// %%%%%
 //
 // The square should have as many lines as the number was
 
 import java.util.Scanner;
 
-public class DrawSquare {
+public class DrawDiagonal {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -26,7 +25,7 @@ public class DrawSquare {
             for (int j = 0; j < side; j++) {
                 if (i == 0 || i == side - 1) {
                     System.out.print(sign);
-                } else if (j == 0 || j == side - 1) {
+                } else if (j == 0 || j == side - 1 || j == i) {
                     System.out.print(sign);
                 } else {
                     System.out.print(space);
@@ -34,5 +33,6 @@ public class DrawSquare {
             }
             System.out.println();
         }
+
     }
 }
