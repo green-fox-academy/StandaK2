@@ -12,6 +12,7 @@
         Print the value associated with key 978-1-60309-453-5*/
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class MapIntroduction2 {
     public static void main(String[] args) {
@@ -35,14 +36,19 @@ public class MapIntroduction2 {
         The Lab (ISBN: 978-1-60309-461-0)
         Remove the key-value pair with key 978-1-60309-444-3
 */
-        for (String key:isbn.keySet()){
+        for (String key : isbn.keySet()) {
             System.out.println(isbn.get(key) + " (ISBN: " + key + ")");
         }
 
 //        Remove the key-value pair with value The Lab
         String lab = "The Lab";
-        isbn.remove(lab);
         System.out.println(isbn);
 
+        for (Map.Entry <String, String> value : isbn.entrySet()) {
+            if (value.getValue() == lab) {
+                String key = value.getKey();
+                isbn.remove(key);
+            }
+        } System.out.println(isbn);
     }
 }
