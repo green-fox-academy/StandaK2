@@ -6,21 +6,21 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class FourRectangles {
 
-    public static void mainDraw(Graphics graphics){
+    public static void mainDraw(Graphics graphics) {
         // draw four different size and color rectangles.
         // avoid code duplication.
 
         drawRandomRectangle(3, graphics);
     }
 
-    public static void drawRandomRectangle(int numberOfSquares, Graphics graphics){
+    public static void drawRandomRectangle(int numberOfSquares, Graphics graphics) {
 
         for (int i = 0; i < numberOfSquares; i++) {
             Color color = new Color((int) (Math.random() * 256), (int) (Math.random() * 256), (int) (Math.random() * 256));
             int randomX = (int) (Math.random() * WIDTH);
             int randomY = (int) (Math.random() * HEIGHT);
-            int randomWidth = (int) (Math.random() * (WIDTH-randomX));
-            int randomHeight = (int) (Math.random() * (HEIGHT-randomY));
+            int randomWidth = (int) (Math.random() * (WIDTH - randomX));
+            int randomHeight = (int) (Math.random() * (HEIGHT - randomY));
 
             graphics.setColor(color);
             graphics.drawRect(randomX, randomY, randomWidth, randomHeight);
