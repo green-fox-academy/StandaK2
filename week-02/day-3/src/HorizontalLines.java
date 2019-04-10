@@ -11,13 +11,22 @@ public class HorizontalLines {
         // and draws a 50 long horizontal line from that point.
         // Draw 3 lines with that function. Use loop for that.
 
-
-
-
-
+        for (int i = 0; i < 3; i++) {
+            drawFiftyHorizontalLines(100 * i, 100 * i, graphics);
+//            drawFiftyHorizontalLines((int)(Math.random() * WIDTH), (int)(Math.random() * HEIGHT), graphics);
+        }
     }
 
-    public static void 
+    public static void drawFiftyHorizontalLines(int initX, int initY, Graphics graphics) {
+
+        Color color = new Color((int) (Math.random() * 256), (int) (Math.random() * 256), (int) (Math.random() * 256));
+
+        int spaceBetweenLines = 10;
+        for (int i = 0; i < 50; i++) {
+            graphics.setColor(color);
+            graphics.drawLine(initX, initY + i * spaceBetweenLines, WIDTH - initX, initY + i * spaceBetweenLines);
+        }
+    }
 
     // Don't touch the code below
     static int WIDTH = 1000;

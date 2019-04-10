@@ -13,21 +13,21 @@ public class GoToCenter {
         // Draw 3 lines with that function. Use loop for that.
 
         for (int i = 0; i < 1000; i++) {
-            drawLineToCenter((int)(Math.random() * WIDTH), (int)(Math.random() * HEIGHT), graphics);
+            drawLineToCenter((int) (Math.random() * WIDTH), (int) (Math.random() * HEIGHT), graphics);
         }
     }
 
     // The x and y coordinates of the line's starting point and the graphics
     // and draws a line from that point to the center of the canvas.
-    public static void drawLineToCenter(int initX, int initY, Graphics graphics){
+    public static void drawLineToCenter(int initX, int initY, Graphics graphics) {
 
-        graphics.drawLine(initX, initY, WIDTH/2, HEIGHT/2);
+        graphics.drawLine(initX, initY, WIDTH / 2, HEIGHT / 2);
 
     }
 
     // Don't touch the code below
-    static int WIDTH = 1440;
-    static int HEIGHT = 900;
+    static int WIDTH = 1000;
+    static int HEIGHT = 1000;
 
     public static void main(String[] args) {
         JFrame jFrame = new JFrame("Drawing");
