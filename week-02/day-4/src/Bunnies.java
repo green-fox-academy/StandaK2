@@ -7,10 +7,10 @@ public class Bunnies {
         System.out.println(Bunnies(10));
     }
 
-    public static double Bunnies(double numberOfBunnies) {
+    public static int Bunnies(int numberOfBunnies) {
 
         if (numberOfBunnies > 0) {
-            return 1 + Bunnies(numberOfBunnies - 0.5);
+            return 2 + Bunnies(numberOfBunnies - 1);
         }
         return 0;
     }
