@@ -14,28 +14,41 @@ public class TicTacToe {
 
     public static void main(String[] args) {
 
+        ticTacResult("win-o.txt");
+//        ticTacResult("win-x.txt");
+//        ticTacResult("draw.txt");
 
-
-        System.out.println(ticTacResult("win-o.txt"));
+        //System.out.println(ticTacResult("win-o.txt"));
         // Should print "O"
 
-        System.out.println(ticTacResult("win-x.txt"));
+    /*    System.out.println(ticTacResult("win-x.txt"));
         // Should print "X"
 
         System.out.println(ticTacResult("draw.txt"));
-        // Should print "Draw"
+        // Should print "Draw"*/
     }
 
-    public static String ticTacResult (String filename){
+    public static void ticTacResult (String filename){
 
         String stoneWins = "OOO";
         String crossWins = "XXX";
 
         try {
+
             Path file = Paths.get(filename);
             List<String> ticTacToe = Files.readAllLines(file);
 
-            for (String row : ticTacToe) {
+            for (int i = 0; i < ; i++) {
+                for (int j = 0; j < ticTacToe.length(); i++) {
+                    // System.out.println(line.charAt(i));
+                }
+                System.out.println(line.charAt(line.charAt(0)));
+            }
+        } catch(IOException error){
+        }
+
+
+/*            for (String row : ticTacToe) {
                 if (row.equals(stoneWins)) {
                         return ("O");
                     } else if (row.equals(crossWins)){
@@ -43,11 +56,8 @@ public class TicTacToe {
                     } else{
 
                     }
-                }return("Draw");
+                }return("Draw");*/
 
-            } catch(IOException error){
-            return ("Can't open file.");
-            }
 
     }
 }
