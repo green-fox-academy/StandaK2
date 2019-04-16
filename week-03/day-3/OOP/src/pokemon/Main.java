@@ -16,8 +16,11 @@ public class Main {
         Pokemon wildPokemon = new Pokemon("Oddish", "leaf", "water");
 
         // Which pokemon should Ash use?
-
-        System.out.print("I choose you, " + pokemonOfAsh.get(2).name + "! ATTACK!!!! ");
+        if (choosePokemon(wildPokemon, pokemonOfAsh).name == null){
+            System.out.println("You don't have any pokemon effective agaist " + wildPokemon.type);
+        } else {
+            System.out.print("I choose you, " + choosePokemon(wildPokemon, pokemonOfAsh).name + "! ATTACK!!!! ");
+        }
     }
 
     private static List<Pokemon> initializePokemons() {
@@ -30,5 +33,15 @@ public class Main {
         pokemon.add(new Pokemon("Kingler", "water", "fire"));
 
         return pokemon;
+    }
+
+    public static Pokemon choosePokemon(Pokemon enemy, List<Pokemon> Pokemons) {
+        for (Pokemon pokemon: Pokemons) {
+            if(pokemon.effectiveAgainst == enemy.type){
+                return pokemon;
+            }
+         }
+        Pokemon zero = new Pokemon(null, null, null);
+        return zero;
     }
 }
