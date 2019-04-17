@@ -12,9 +12,9 @@ public class Farm {
         this.slots = slots;
     }
 
-    public void breed(String type) {
+    public void breed(Animal newAnimal) {
         if (slots > 0) {
-            this.animals.add(new Animal(type));
+            this.animals.add(newAnimal);
             this.slots--;
         }
     }

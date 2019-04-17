@@ -16,7 +16,7 @@ public class Main {
         Farm myFarm = new Farm(initializeAnimals(), 4);
 
         System.out.println(myFarm);
-        myFarm.breed("deer");
+        myFarm.breed(new Animal("deer"));
         System.out.println(myFarm);
         myFarm.slaughter();
         myFarm.slaughter();
