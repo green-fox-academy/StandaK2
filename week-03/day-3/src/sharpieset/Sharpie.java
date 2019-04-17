@@ -6,21 +6,27 @@
 //        We can use() the sharpie objects
 //        which decreases inkAmount
 
-package sharpie;
+package sharpieset;
 
 public class Sharpie {
 
     String color;
-    double width;
-    double inkAmount;
+    Double width;
+    Double inkAmount;
 
-    public Sharpie(String color, double width){
+    public Sharpie(String color, double width) {
         this.color = color;
         this.width = width;
         this.inkAmount = 100.0;
     }
 
-    public void use(){
+    public Sharpie(String color, double width, double inkAmount) {
+        this.color = color;
+        this.width = width;
+        this.inkAmount = inkAmount;
+    }
+
+    public void use() {
         this.inkAmount *= 0.9;
     }
 }
