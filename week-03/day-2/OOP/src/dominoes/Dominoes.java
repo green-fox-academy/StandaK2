@@ -6,18 +6,19 @@ import java.util.List;
 public class Dominoes {
     public static void main(String[] args) {
         List<Domino> dominoes = initializeDominoes();
-        // You have the list of Dominoes
-        // Order them into one snake where the adjacent dominoes have the same numbers on their adjacent sides
-        // eg: [2, 4], [4, 3], [3, 5] ...
+            // You have the list of Dominoes
+            // Order them into one snake where the adjacent dominoes have the same numbers on their adjacent sides
+            // eg: [2, 4], [4, 3], [3, 5] ...
 
         List<Domino> snakeDominoes = new ArrayList<>();
 
-        for (int i = 0; i < dominoes.size(); i++) {
-            for (int j = 0; j < dominoes.size(); j++) {
-                if (dominoes.get(i).getRightSide() == dominoes.get(j).getLeftSide()) {
-                    if (!snakeDominoes.contains(dominoes.get(i)) && !snakeDominoes.contains(dominoes.get(j))) {
-                        snakeDominoes.add(dominoes.get(i));
-                        snakeDominoes.add(dominoes.get(j));
+        for (Domino domino1: dominoes){
+            for (Domino domino2: dominoes){
+                if (domino1.getRightSide() == domino2.getLeftSide()) {
+                    if (!snakeDominoes.contains(domino1)
+                            && !snakeDominoes.contains(domino2)) {
+                        snakeDominoes.add(domino1);
+                        snakeDominoes.add(domino2);
                     }
                 }
             }
