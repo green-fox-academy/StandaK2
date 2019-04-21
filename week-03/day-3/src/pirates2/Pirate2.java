@@ -1,9 +1,9 @@
-//        Create a Pirate class. While you can add other fields and methods, you must have these methods:-
+//        Create a Pirate2 class. While you can add other fields and methods, you must have these methods:-
 //
-//        drinkSomeRum() - intoxicates the Pirate some
-//        howsItGoingMate() - when called, the Pirate replies, if drinkSomeRun was called:-
+//        drinkSomeRum() - intoxicates the Pirate2 some
+//        howsItGoingMate() - when called, the Pirate2 replies, if drinkSomeRun was called:-
 //        0 to 4 times, "Pour me anudder!"
-//        else, "Arghh, I'ma Pirate. How d'ya d'ink its goin?", the pirate passes out and sleeps it off.
+//        else, "Arghh, I'ma Pirate2. How d'ya d'ink its goin?", the pirate passes out and sleeps it off.
 //        If you manage to get this far, then you can try to do the following.
 //
 //        die() - this kills off the pirate, in which case, drinkSomeRum, etc. just result in he's dead.
@@ -12,32 +12,32 @@
 //
 //        Add a parrot.
 
-        package pirates;
+        package pirates2;
 
-public class Pirate {
+public class Pirate2 {
     int drinkCount = 0;
     boolean live;
 
-    public Pirate(){
+    public Pirate2(){
     }
 
     public void drinkSomeRum() {
         if (live) {
             this.drinkCount++;
         } else {
-            Pirate
+            Pirate2
         }
     }
     public String howsItGoingMate(){
         if (drinkCount > 4){
             return "Pour me anudder!";
         } else{
-            return "Arghh, I'ma Pirate. How d'ya d'ink its goin?";
+            return "Arghh, I'ma Pirate2. How d'ya d'ink its goin?";
         }
     }
         public String die(){
         this.live = false;
-        return "Pirate is dead. RIP."
+        return "Pirate2 is dead. RIP."
         }
 
 }
