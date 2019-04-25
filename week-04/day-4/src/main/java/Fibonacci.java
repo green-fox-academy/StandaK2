@@ -5,20 +5,19 @@
 //Define a recursive fibonacci(n) method that returns the nth fibonacci number, with n=0 representing
 // the start of the sequence.
 
-import java.lang.reflect.Array;
+// 0	1	1	2	3	5	8	13	21	34	55	89	144	233	377	610	987	1597	2584	4181	6765
 
 public class Fibonacci {
-    public static void main(String[] args) {
 
-        System.out.println(Fibonacci(10));
-
+    public Fibonacci() {
     }
 
-    public static int Fibonacci(int i) {
+    public int getFibonacciNumber (int i){
 
         if (i == 0) return 0;
-        if (i <= 2) return 1;
+        if (i<= 2) return 1;
 
-        return (Fibonacci(i - 1) + Fibonacci(i - 2));
+        return (getFibonacciNumber(i - 1) + getFibonacciNumber(i - 2));
+
     }
 }
