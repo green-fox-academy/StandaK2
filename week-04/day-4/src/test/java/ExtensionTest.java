@@ -63,7 +63,7 @@ public class ExtensionTest {
 
     @Test
     public void testTranslate_bemutatkozik() {
-        assertEquals("stavanda", extension.translate("standa"));
+        assertEquals("stavand", extension.translate("standa"));
     }
 
     @Test
