@@ -1,7 +1,8 @@
 get milk;1
-get water;0
+get water;1
 call your mother;1
 wash yourself;1
 get high;0
 train your brain;0
 kiss my wife;1
+blablabla;0

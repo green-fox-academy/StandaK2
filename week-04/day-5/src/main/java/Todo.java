@@ -3,7 +3,6 @@ public class Todo {
     public static void main(String[] args) {
 
         File myFile = new File("todo.txt");
-
         TaskList myToDo = new TaskList(myFile.giveMeTaskList(), myFile.giveMeStatusList());
 
         if (args.length == 0) {
