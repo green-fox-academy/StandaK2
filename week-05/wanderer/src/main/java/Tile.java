@@ -4,36 +4,31 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Tile {
+public class Tile implements Drawable{
 
-        BufferedImage image;
-        int posX, posY;
+        private BufferedImage image;
+        protected static int tilePixels = 72;
 
-        public Tile(String filename, int posX, int posY) {
-            this.posX = posX;
-            this.posY = posY;
+    protected int[] currentPositionXY;
+
+        public Tile(String fileName) {
+            this.currentPositionXY = new int[]{0, 0};
             try {
-                image = ImageIO.read(new File(filename));
+                this.image = ImageIO.read(new File(fileName));
             } catch (IOException e) {
+                System.out.println("cannot read file");
                 e.printStackTrace();
             }
         }
 
-    //public Tile() {
-    //}
-
-
     public void draw(Graphics graphics) {
-            if (image != null) {
-                graphics.drawImage(image, posX, posY, null);
-            }
+        if (this.image != null) {
+            graphics.drawImage(this.image, this.currentPositionXY[0]*tilePixels, this.currentPositionXY[1]*tilePixels, null);
         }
-
-    public void setPosX(int posX) {
-        this.posX = posX;
     }
 
-    public void setPosY(int posY) {
-        this.posY = posY;
+    public void setCurrentPositionXY(int posX, int posY) {
+        this.currentPositionXY[0] = posX;
+        this.currentPositionXY[1] = posY;
     }
 }

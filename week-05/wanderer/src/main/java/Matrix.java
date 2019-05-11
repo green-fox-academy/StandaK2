@@ -1,42 +1,42 @@
-import java.util.Random;
+import java.awt.*;
 
-public class Matrix {
+public class Matrix implements Drawable{
 
     private static int[][] matrix = {       {0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
-                                    {0, 0, 0, 1, 0, 1, 0, 1, 1, 0},
-                                    {0, 1, 1, 1, 0, 1, 0, 1, 1, 0},
-                                    {0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
-                                    {1, 1, 1, 1, 0, 1, 1, 1, 1, 0},
-                                    {0, 1, 0, 1, 0, 0, 0, 0, 1, 0},
-                                    {0, 1, 0, 1, 0, 1, 1, 0, 1, 0},
-                                    {0, 0, 0, 0, 0, 1, 1, 0, 1, 0},
-                                    {0, 1, 1, 1, 0, 0, 0, 0, 1, 0},
-                                    {0, 0, 0, 1, 0, 1, 1, 0, 1, 0},};
+                                            {0, 0, 0, 1, 0, 1, 0, 1, 1, 0},
+                                            {0, 1, 1, 1, 0, 1, 0, 1, 1, 0},
+                                            {0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
+                                            {1, 1, 1, 1, 0, 1, 1, 1, 1, 0},
+                                            {0, 1, 0, 1, 0, 0, 0, 0, 1, 0},
+                                            {0, 1, 0, 1, 0, 1, 1, 0, 1, 0},
+                                            {0, 0, 0, 0, 0, 1, 1, 0, 1, 0},
+                                            {0, 1, 1, 1, 0, 0, 0, 0, 1, 0},
+                                            {0, 0, 0, 1, 0, 1, 1, 0, 1, 0},};
 
-//    public Matrix() {
-//    }
+    private Wall wall;
+    private Path path;
 
-    public void setValue(int x, int y, int value){
-        Matrix.matrix[x][y] = value;
+    public Matrix(Wall wall, Path path ) {
+        this.wall = wall;
+        this.path = path;
     }
 
     public static int getValue(int x, int y) {
-        return Matrix.matrix[x][y];
+        return Matrix.matrix[y][x];
     }
 
-    public int getLenght() {
-        return this.matrix.length;
+    public static int getLenght() {
+        return Matrix.matrix.length;
     }
 
-    // returns random coordinates on matrix to position enemies, checks also already full position
-    public int[] giveMeRandomCoordinates() {
+    public static int[] giveMeRandomCoordinates() {
         boolean randomOnPath = false;
         int[] randomCoordinates = new int[2];
 
         while (!randomOnPath) {
             int randomI = (int) (Math.random() * matrix.length);
             int randomJ = (int) (Math.random() * matrix.length);
-            if (this.matrix[randomI][randomJ] == 0 && (randomI != 0 && randomJ != 0)){
+            if (Matrix.matrix[randomI][randomJ] == 0 && (randomI != 0 && randomJ != 0)){
                 randomCoordinates[1] = randomI;
                 randomCoordinates[0] = randomJ;
                 randomOnPath = true;
@@ -45,10 +45,30 @@ public class Matrix {
     }
 
     @Override
+    public void draw(Graphics graphics) {
+
+        for (int i = 0; i < Matrix.getLenght(); i++) {
+            for (int j = 0; j < Matrix.getLenght(); j++) {
+                this.wall.setCurrentPositionXY(i, j);
+                this.path.setCurrentPositionXY(i, j);
+
+                // draw wall on board
+                if (Matrix.getValue(i, j) == 0) {
+                    this.path.draw(graphics);
+                }
+                // draw path on board
+                if (Matrix.getValue(i, j) == 1) {
+                    this.wall.draw(graphics);
+                }
+            }
+        }
+    }
+
+    @Override
     public String toString() {
         String result = "";
-        for (int i = 0; i < this.getLenght(); i++) {
-            for (int j = 0; j < this.getLenght(); j++) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
                 result += (this.getValue(i, j) + " ");
             }
             result += "\n";

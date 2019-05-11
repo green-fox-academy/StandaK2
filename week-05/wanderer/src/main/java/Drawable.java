@@ -1,4 +1,6 @@
+import java.awt.*;
+
 public interface Drawable {
 
-    void Draw();
+    void draw(Graphics graphics);
 }

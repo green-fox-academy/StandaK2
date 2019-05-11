@@ -1,8 +1,11 @@
-public interface Movable {
+import java.awt.event.KeyListener;
+
+public interface Movable extends Drawable {
 
     void moveUp();
     void moveDown();
     void moveLeft();
     void moveRight();
-    void moveRandom();
+    void setMoveCondition();
+    int[] getCurrentPositionXY();
 }

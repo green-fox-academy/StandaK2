@@ -1,78 +1,43 @@
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
-public class Character extends JComponent implements KeyListener, Movable, Drawable {
+public abstract class Character implements Movable {
 
-    BufferedImage image;
+    private BufferedImage image;
     protected String fileName;
-    protected int posX, posY;
+    protected int[] currentPositionXY;
+    protected static int stepCounter;
+    protected boolean moveCondition;
     protected int level;
     protected int maxHealthPoint;
     protected int currentHealthPoint;
     protected int defendPoint;
     protected int strikePoint;
+    protected HashMap<String, String> images;
 
-    public Character(String filename, int posX, int posY) {
-        this.currentHealthPoint = this.maxHealthPoint;
-        this.posX = posX;
-        this.posY = posY;
-        try {
-            image = ImageIO.read(new File(filename));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public Character() {
+        stepCounter = 0;
+        this.moveCondition = false;
+    }
+
+    public boolean isAlive(){
+        return currentHealthPoint > 0;
     }
 
     @Override
-    public void paint(Graphics graphics) {
-        super.paint(graphics);
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-    }
-
-    // But actually we can use just this one for our goals here
-    @Override
-    public void keyReleased(KeyEvent e) {
-        // When the up or down keys hit, we change the position of our box
+    public int[] getCurrentPositionXY() {
+        return this.currentPositionXY;
     }
 
     public void draw(Graphics graphics) {
-        if (image != null) {
-            graphics.drawImage(image, posX, posY, null);
+        if (this.image != null) {
+            graphics.drawImage(this.image, this.currentPositionXY[0]* Tile.tilePixels,
+                    this.currentPositionXY[1]* Tile.tilePixels, null);
         }
-    }
-
-    public void setPosXY(int posX, int posY) {
-        this.posX = posX;
-        this.posY = posY;
-    }
-
-    public void setPosX(int posX) {
-        this.posX = posX;
-    }
-
-    public void setPosY(int posY) {
-        this.posY = posY;
-    }
-
-    public int getPosX() {
-        return posX;
-    }
-
-    public int getPosY() {
-        return posY;
     }
 
     public int getLevel() {
@@ -111,33 +76,73 @@ public class Character extends JComponent implements KeyListener, Movable, Drawa
         this.strikePoint = strikePoint;
     }
 
-    @Override
-    public void Draw() {
 
+    public void setImageFile(String keyImageType){
+        this.fileName = images.get(keyImageType);
+        try {
+            this.image = ImageIO.read(new File(this.fileName));
+        } catch (IOException error) {
+            error.printStackTrace();
+        }
+    }
+
+    public void randomMove() {
+        boolean foundPath = false;
+        if (this.moveCondition) {
+            while (!foundPath) {
+                int randomNumber = (int) (Math.random() * 4);
+                switch (randomNumber) {
+                    case 0: if(ifICanIMove(this.currentPositionXY[0], this.currentPositionXY[1] - 1, 1,
+                            -1, "UP")){
+                        foundPath = true;
+                        break;
+                    }
+                    case 1: if(ifICanIMove(this.currentPositionXY[0], this.currentPositionXY[1] + 1, 1,
+                            1, "DOWN")) {
+                        foundPath = true;
+                        break;
+                    }
+                    case 2:  if(ifICanIMove(this.currentPositionXY[0] - 1, this.currentPositionXY[1], 0,
+                            -1, "LEFT")) {
+                        foundPath = true;
+                        break;
+                    }
+                    case 3: if(ifICanIMove(this.currentPositionXY[0] + 1, this.currentPositionXY[1], 0,
+                            1, "RIGHT")) {
+                        foundPath = true;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    public boolean ifICanIMove(int PositionX, int PositionY, int axis, int XYChange, String direction){
+        try {
+            if (Matrix.getValue(PositionX, PositionY) == 0 && this.moveCondition) {
+                this.currentPositionXY[axis] += XYChange;
+                this.setImageFile(direction);
+                return true;
+            }
+        } catch (ArrayIndexOutOfBoundsException error){
+//            System.out.println("bound error");
+            return false;
+        }
+        return false;
     }
 
     @Override
-    public void moveUp() {
-
-    }
+    public abstract void moveUp();
 
     @Override
-    public void moveDown() {
-
-    }
+    public abstract void moveDown();
 
     @Override
-    public void moveLeft() {
-
-    }
+    public abstract void moveLeft();
 
     @Override
-    public void moveRight() {
-
-    }
+    public abstract void moveRight();
 
     @Override
-    public void moveRandom() {
-
-    }
+    public abstract void setMoveCondition();
 }

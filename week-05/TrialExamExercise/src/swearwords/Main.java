@@ -1,4 +1,5 @@
 package swearwords;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,11 +19,11 @@ public class Main {
 
     }
 
-    public static int clearContentandCount(String[] badWords, String content){
+    public static int clearContentandCount(String[] badWords, String content) {
 
         int count = 0;
 
-        for (String badWord: badWords) {
+        for (String badWord : badWords) {
 
             while (content.contains(" " + badWord + " ")) {
                 content = content.replaceFirst(" " + badWord + " ", " ");
@@ -43,18 +44,18 @@ public class Main {
                 count++;
             }
         }
-    return count;
+        return count;
 
     }
 
-    public static String contentFromFile(Path file){
+    public static String contentFromFile(Path file) {
         String wholeContent = "";
         try {
             List<String> content = Files.readAllLines(file);
-            for (String line: content) {
+            for (String line : content) {
                 wholeContent += line;
             }
-        } catch (IOException error){
+        } catch (IOException error) {
             System.out.println("Not able to read file.");
         }
         return wholeContent;
