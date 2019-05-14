@@ -17,11 +17,13 @@ public abstract class Character implements Movable {
     protected int currentHealthPoint;
     protected int defendPoint;
     protected int strikePoint;
+    private static int dieSide = 6;
     protected HashMap<String, String> images;
 
     public Character() {
         stepCounter = 0;
         this.moveCondition = false;
+        this.level = 1;
     }
 
     public boolean isAlive(){
@@ -115,6 +117,11 @@ public abstract class Character implements Movable {
                 }
             }
         }
+    }
+
+    public static int dieRoll(){
+        return (int) (Math.random() * dieSide);
+
     }
 
     public boolean ifICanIMove(int PositionX, int PositionY, int axis, int XYChange, String direction){

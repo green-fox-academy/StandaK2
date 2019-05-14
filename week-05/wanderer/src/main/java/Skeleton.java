@@ -4,9 +4,10 @@ public class Skeleton extends Character {
 
     public Skeleton() {
         super();
-        this.maxHealthPoint = 10;
+        this.maxHealthPoint = 2 * this.level * dieRoll();
         this.currentHealthPoint = this.maxHealthPoint;
-        this.defendPoint = 10;
+        this.defendPoint = this.level/2 * dieRoll();
+        this.strikePoint = this.level * dieRoll();
         this.currentPositionXY = Matrix.giveMeRandomCoordinates();
         this.images = new HashMap<String, String>() {{
             put("INIT", "img/skeleton.png");

@@ -4,11 +4,10 @@ public class Boss extends Character {
 
     public Boss() {
         super();
-        this.maxHealthPoint = 10;
+        this.maxHealthPoint = 2 * this.level * dieRoll() + dieRoll();
         this.currentHealthPoint = this.maxHealthPoint;
-        this.defendPoint = 10;
-        this.strikePoint = 6;
-
+        this.defendPoint = this.level/2 * dieRoll() + dieRoll() / 2;
+        this.strikePoint = this.level * dieRoll() + this.level;
         this.currentPositionXY = Matrix.giveMeRandomCoordinates();
         this.images = new HashMap<String, String>() {{
             put("INIT", "img/boss.png");

@@ -16,8 +16,9 @@ public class Game extends JComponent implements KeyListener {
 
         this.movables = new ArrayList<>(createListOfMovables(3, 6));
         this.drawables = new ArrayList<>(
-                Arrays.asList(new Matrix(new Wall(), new Path()),  new StatusBar(this.movables)));
+                Arrays.asList(new Matrix(new Wall(), new Path())));
         this.drawables.addAll(this.movables);
+        this.drawables.add(new StatusBar(this.movables));
 
         setPreferredSize(new Dimension(Tile.tilePixels * Matrix.getLenght(),
                 Tile.tilePixels * Matrix.getLenght() + StatusBar.statusBarPixels));
@@ -70,11 +71,26 @@ public class Game extends JComponent implements KeyListener {
             for (Movable movable : this.movables) {
                 movable.moveRight();
             }
+        } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            StatusBar.setBattle(true);
         }
 
         for (Movable movable : movables) {
             movable.setMoveCondition();
         }
         repaint();
+    }
+//
+    public void battle(Character warrior, Character enemy){
+        int warriorStrikeValue = warrior.strikePoint + 2* Character.dieRoll();
+        int enemyStrikeValue = enemy.strikePoint + 2* Character.dieRoll();
+
+        while(warrior.isAlive() && enemy.isAlive()){
+            if(warriorStrikeValue > enemy.defendPoint){
+                enemy.currentHealthPoint -= warriorStrikeValue;
+                repaint();
+            }
+        }
+
     }
 }

@@ -8,10 +8,16 @@ public class StatusBar implements Drawable {
     protected int initPixelPosY;
     private List<Movable> movables;
     private Warrior warrior;
+    private static boolean battle;
 
     public StatusBar(List<Movable> movables) {
         this.initPixelPosY = Matrix.getLenght() * Tile.tilePixels + 20;
         this.movables = movables;
+        this.battle = false;
+    }
+
+    public static void setBattle(boolean status) {
+        battle = status;
     }
 
     @Override
@@ -34,13 +40,36 @@ public class StatusBar implements Drawable {
                         "\t|\tDP: " + ((Boss) movable).getDefendPoint() + "\t|\tSP: " +
                         ((Boss) movable).getStrikePoint() + ", " + movable.getCurrentPositionXY()[0] +
                         " " + movable.getCurrentPositionXY()[1], 0, this.initPixelPosY + 20);
+                drawBattleMessage(graphics,((Boss) movable).getCurrentHealthPoint());
+
             }
             if (movable instanceof Skeleton && Arrays.equals(movable.getCurrentPositionXY(), this.warrior.currentPositionXY)) {
                 graphics.drawString("Skeleton: (Level " + ((Skeleton) movable).getLevel() + ")\t HP: " +
                         ((Skeleton) movable).getCurrentHealthPoint() + "/" + ((Skeleton) movable).getMaxHealthPoint() +
                         "\t|\tDP: " + ((Skeleton) movable).getDefendPoint() + "\t|\tSP: " +
                         ((Skeleton) movable).getStrikePoint(), 0, this.initPixelPosY + 20);
+                drawBattleMessage(graphics,((Skeleton) movable).getCurrentHealthPoint());
             }
         }
     }
+
+    private void drawBattleMessage(Graphics graphics, int enemyHealth){
+        drawTransRectangle(graphics);
+        graphics.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+        graphics.setColor(Color.red);
+        if (battle){
+            graphics.drawString( "Hero: " + this.warrior.getCurrentHealthPoint() + "<<SPACE>> for attack" + "\nEnemy:" + enemyHealth, 90,
+                    this.initPixelPosY - Matrix.getLenght() * Tile.tilePixels/2 - 15);
+        } else {
+            graphics.drawString("PRESS << SPACE >> FOR BATTLE", 90,
+                    this.initPixelPosY - Matrix.getLenght() * Tile.tilePixels / 2 - 15);
+        }
+    }
+
+    private void drawTransRectangle(Graphics graphics){
+        Color myColour = new Color(0, 0, 0, 127);
+        graphics.setColor(myColour);
+        graphics.fillRect(0, Matrix.getLenght() * Tile.tilePixels/2 - 40,
+                Matrix.getLenght() * Tile.tilePixels, 80);
+        }
 }

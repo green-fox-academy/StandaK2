@@ -4,10 +4,10 @@ public class Warrior extends Character{
 
     public Warrior() {
         super();
-        this.maxHealthPoint = 10;
+        this.maxHealthPoint = 20 + 3 * this.dieRoll();
         this.currentHealthPoint = this.maxHealthPoint;
-        this.defendPoint = 10;
-        this.strikePoint = 6;
+        this.defendPoint = 2 * this.dieRoll();
+        this.strikePoint = 5 + this.dieRoll();
         this.currentPositionXY = new int[]{0, 0};
         this.images = new HashMap<String, String>() {{
             put("INIT", "img/hero-down.png");
