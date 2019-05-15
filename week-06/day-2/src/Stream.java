@@ -149,37 +149,34 @@ public class Stream {
 
 
      //    Exercise 11
-        String fileName = "article.txt";
+//        Find a random Wikipedia article and copy the contents to a txt file.
+//
+//        Create a Stream expression which reads all text from this file, and prints
+//        the 100 most common words in descending order. Keep in mind that the text contains
+//        punctuation characters which should be ignored.
+
+                String fileName = "article.txt";
 
         try {
-            String article = Files.readAllLines(Paths.get(fileName)).stream()
+            String[] article = Files.readAllLines(Paths.get(fileName)).stream()
                     .map(w -> w.replace(".", ""))
                     .map(w -> w.replace(",", ""))
                     .map(w -> w.replace("\"", ""))
                     .map(w -> w.replace(")", ""))
                     .map(w -> w.replace("(", ""))
-                    //.map(w -> w.toLowerCase())
-                    .collect(Collectors.joining());
+                    .map(w -> w.toLowerCase())
+                    .collect(Collectors.joining()).split(" ");
 
-            Map<String, Long> wordFrequency = Arrays.stream(article.split(" "))
-                    .sorted(Integer::intValue).re
-                    .sorted(comparingInt(Record::getScore).reversed())
-                    .collect(groupingBy(Record::getName, LinkedHashMap::new, toList()))
-                    .values().stream()
-                    .flatMap(Collection::stream)
-                    .collect(toList());
-
+            Map<String, Long> wordFrequency = Arrays.stream(article)
                     .collect(Collectors.groupingBy(Function.identity(), counting()));
 
-            System.out.println(wordFrequency);
-
+            wordFrequency.entrySet().stream()
+                    .sorted(Map.Entry.comparingByKey())
+                    .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                    .limit(100)
+                    .forEach(System.out::println);
         } catch (IOException e) {
             System.out.println("can not open files");
         }
-
-
-
-
     }
-
 }
