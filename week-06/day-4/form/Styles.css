@@ -1,0 +1,67 @@
+body{
+    background: lightgray;
+    color: #3c3c3c;
+    font-family: "Century Gothic";
+    font-weight: lighter;
+}
+
+form.center {
+    margin: auto;
+    margin-top: 100px;
+    background: white;
+    width: 40%;
+    padding: 10px 50px 50px 70px;
+}
+
+#header{
+    /*border: 50px;*/
+    margin-bottom: 50px;
+}
+
+label{
+    display: block;
+    font-size: 10px;
+    /*border-left: 70px;*/
+}
+
+.button{
+
+}
+
+.button {
+    border: none;
+    color: white;
+    background-color: #6b6b6b;
+    /*padding: 20px;*/
+    /*text-align: center;*/
+    /*text-decoration: none;*/
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 7px;
+}
+
+button:hover{
+    background-color: black;
+}
+
+input{
+    width: 300px;
+    height: 30px;
+    margin-bottom: 20px;
+
+    /*border: 50px;*/
+}
+input:hover{
+    /*border-color: lightsalmon;*/
+}
+
+/*.input2 {*/
+/*    width: 300px;*/
+/*    height: 30px;*/
+/*    margin-bottom: 20px;*/
+/*}*/
+
+.inputclass { position: relative; }
+/*.inputclass input { border:none; background:#fff; display:block; width: 100%; box-sizing: border-box }*/
+.inputclass img { position: relative; top: 5px; left: -35px;}
