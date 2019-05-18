@@ -5,6 +5,7 @@ import com.webshop.webshop.models.WebShop;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,15 +37,14 @@ public class WebShopController {
 
     @RequestMapping("/webshop/cheapest-first")
     public String getCheapestFirst  (Model model) {
-
         model.addAttribute("items", myWebShop.getListCheapestFirst());
         return "index";
     }
 
     @RequestMapping("/webshop/contains-nike")
-    public String getListContainsString(Model model) {
+    public String getListContainsNike(Model model) {
 
-        model.addAttribute("items", myWebShop.getListContainString());
+        model.addAttribute("items", myWebShop.getListContainNike());
         return "index";
     }
 
@@ -59,6 +59,13 @@ public class WebShopController {
     public String getMostExpensiveShopItem (Model model) {
 
         model.addAttribute("expensive", myWebShop.getMostExpensiveShopItem());
+        return "index";
+    }
+
+    @RequestMapping("/webshop/search")
+    public String searchItem (@RequestParam String search, Model model) {
+
+        model.addAttribute("items", myWebShop.getListContainWord(search));
         return "index";
     }
 }

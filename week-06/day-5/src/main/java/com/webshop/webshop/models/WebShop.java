@@ -26,10 +26,16 @@ public class WebShop {
                 .collect(Collectors.toList());
     }
 
-    public List<ShopItem> getListContainString(){
+    public List<ShopItem> getListContainNike(){
         String word = "Nike";
         return this.shopItemList.stream()
                 .filter(shopItem -> shopItem.getName().contains(word) || shopItem.getDescription().contains(word))
+                .collect(Collectors.toList());
+    }
+
+    public List<ShopItem> getListContainWord(String word){
+        return this.shopItemList.stream()
+                .filter(shopItem -> shopItem.getName().toLowerCase().contains(word) || shopItem.getDescription().toLowerCase().contains(word))
                 .collect(Collectors.toList());
     }
 

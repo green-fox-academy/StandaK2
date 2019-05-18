@@ -4,16 +4,40 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/Styles.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
 </head>
 <body>
+<div class="container">
+<h1>My shop</h1>
+<form id="searchbar" method="post" action="/webshop/search">
+    <div class="input-group mb-3">
+        <input class="form-control" type="text" name="search" placeholder="...something like Nike"/>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" id="search" type="submit">search</button>
+            </div>
+        </div>
+</form>
 
-<table class="center">
+<table>
+    <thead>
+    <tr>
+        <th><form method="get" action="/webshop/only-available"><input type="submit" class="btn btn-primary" value="Only available"></form></th>
+        <th><form method="get" action="/webshop/cheapest-first"><input type="submit" class="btn btn-primary" value="Cheapest first"></form></th>
+        <th><form method="get" action="/webshop/contains-nike"><input type="submit" class="btn btn-primary" value="Contains Nike"></form></th>
+        <th><form method="get" action="/webshop/average-stock"><input type="submit" class="btn btn-primary" value="Average stock"></form></th>
+        <th><form method="get" action="/webshop/most-expensive"><input type="submit" class="btn btn-primary" value="Most Expensive"></form></th>
+    </tr>
+    </thead>
+</table>
+<table class="table table">
+    <thead class="thead-dark" th:if= "${items != null}">
     <tr>
         <th>Name</th>
-        <th>Descrition</th>
+        <th>Description</th>
         <th>Price</th>
         <th>Quantity</th>
     </tr>
+    </thead>
     <tr th:each="item : ${items}">
         <td th:text="${item.getName()}"></td>
         <td th:text="${item.getDescription()}"></td>
@@ -21,10 +45,12 @@
         <td th:text="${item.getQuantityOfStock()}"></td>
     </tr>
     <tr>
-        <td th:text="${average}"></td>
-        <td th:text="${expensive}"></td>
+        <td th:if= "${average != null}" th:text="${average}"></td>
+    </tr>
+    <tr>
+        <td th:if= "${expensive != null}" th:text="${expensive}"></td>
     </tr>
 </table>
-
+</div>
 </body>
 </html>
