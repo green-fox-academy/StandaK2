@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Balance</th>
+            <th>Animal Type</th>
+        </tr>
+        </thead>
+        <tr th:each="account : ${accountList}">
+            <td th:text="${account.}"></td>
+            <td th:text="${account.getBalanceString()} +' '+ ${currency}"></td>
+            <td th:text="${account.getAnimalType()}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
