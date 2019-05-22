@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="/Style.css" />
 </head>
 <body>
 <div>
@@ -16,9 +15,9 @@
             </tr>
         </thead>
         <tr>
-            <td th:text="${account.getName()}"></td>
-            <td th:text="${account.getBalanceString()} +' '+ ${account.currency}"></td>
-            <td th:text="${account.getAnimalType()}"></td>
+            <td th:text="${myAccount.getName()}"></td>
+            <td th:text="${myAccount.getBalanceString()} +' '+ ${myAccount.currency}"></td>
+            <td th:text="${myAccount.getAnimalType()}"></td>
         </tr>
     </table>
 </div>

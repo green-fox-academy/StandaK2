@@ -7,15 +7,38 @@ public class BankAccount {
     private String name;
     private double balance;
     private String animalType;
-    private String balanceString;
-    DecimalFormat df = new DecimalFormat("#.00");
+    private boolean goodGuy;
     public static String currency = "Zebra";
+    static int count = 0;
+    private int id;
+
+
+    public BankAccount() {
+
+    }
+
+    public BankAccount(String name, int balance, String animalType, boolean goodGuy) {
+        this.name = name;
+        this.balance = balance;
+        this.animalType = animalType;
+        this.id = count++;
+        this.goodGuy = true;
+    }
 
     public BankAccount(String name, int balance, String animalType) {
         this.name = name;
         this.balance = balance;
         this.animalType = animalType;
-        this.balanceString = df.format(balance);
+        this.id = count++;
+        this.goodGuy = false;
+    }
+
+    public void raiseTheBalance(){
+        if (this.animalType.equals("Lion")) {
+            this.balance += 100;
+        } else {
+            this.balance += 10;
+        }
     }
 
     public String getName() {
@@ -42,11 +65,12 @@ public class BankAccount {
         this.animalType = animalType;
     }
 
-    public String getBalanceString() {
-        return balanceString;
+    public boolean isGoodGuy() {
+        return goodGuy;
     }
 
-    public void setBalanceString(String balanceString) {
-        this.balanceString = balanceString;
+    public int getId() {
+        return id;
     }
+
 }

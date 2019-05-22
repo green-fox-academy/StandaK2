@@ -2,22 +2,99 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/Style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <title>Title</title>
 </head>
 <body>
-<div>
-    <table>
-        <thead>
+<div class="container">
+    <h1>Bank of Simba</h1><br>
+    <table class="table table">
+        <thead class="thead-dark">
         <tr>
             <th>Name</th>
             <th>Balance</th>
             <th>Animal Type</th>
+            <th>Index</th>
+            <th>Is it Lion?</th>
+            <th>Good/Bad guy?</th>
         </tr>
         </thead>
-        <tr th:each="account : ${accountList}">
-            <td th:text="${account.}"></td>
-            <td th:text="${account.getBalanceString()} +' '+ ${currency}"></td>
+        <tr th:each="account : ${accountList}" >
+            <td th:text="${account.getName()}"></td>
+            <td th:text="${#numbers.formatDecimal(account.getBalance(), 0, 'COMMA', 2, 'POINT')}+' '+ ${account.currency}"></td>
             <td th:text="${account.getAnimalType()}"></td>
+            <td th:text="${accountStat.index}"></td>
+            <td class="lion" th:text="${account.getAnimalType()} == 'Lion' ? 'YES' : ' '"></td>
+            <td th:text="${account.isGoodGuy()} ? 'Good Guy' : 'Bad Guy'"></td>
+            <td>
+                <form method="POST" th:action="@{/raise}">
+                    <input type="hidden" name="controllerRef" th:value="${account.id}" />
+                    <button type="submit" name="submit" value="value" class="link-button">Raise the balance</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+<!--            <form method="post" action="/add" >-->
+<!--                <td>-->
+<!--                    <label for="name">Name</label>-->
+<!--                    <input type="text" name="name" id="name" required><br>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    <label for="balance">Balance</label>-->
+<!--                    <input type="number" name="balance" id="balance" required>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    <label for="animalType">Animal type</label>-->
+<!--                    <input type="text" name="animalType" id="animalType" required>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    <label for="goodGuy">Good guy?</label>-->
+<!--                    <input type="checkbox" name="goodGuy" id="goodGuy" checked>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    <button type="submit">Add animal account</button>-->
+<!--                </td>-->
+<!--            </form>-->
+            <form method="post" th:action="@{/add}" th:object="${newAccount}" >
+                <td>
+                    <label for="name">Name</label>
+                    <input type="text" th:field="*{name}" name="name" id="name" required><br>
+                </td>
+                <td>
+                    <label for="balance">Balance</label>
+                    <input type="number" th:field="*{balance}" name="balance" id="balance" required>
+                </td>
+                <td>
+                    <label for="animalType">Animal type</label>
+                    <input type="text" th:field="*{animalType}" name="animalType" id="animalType" required>
+                </td>
+                <td>
+                    <label for="goodGuy">Good guy?</label>
+                    <input type="checkbox" th:field="*{goodGuy}" name="goodGuy" id="goodGuy" >
+                </td>
+                <td>
+                    <button type="submit">Add animal account</button>
+                </td>
+            </form>
+<!--            <div>-->
+<!--                <form action="#" th:action="@{/add}" th:object="${newAccount}" method="post">-->
+<!--                    <label for="name">Title</label>-->
+<!--                    <input type="text" name="name" id="name" th:field="*{name}" required>-->
+
+<!--                    <label for="balance">Author</label>-->
+<!--                    <input type="number" name="balance" id="balance" th:field="*{balance}" required>-->
+
+<!--                    <label for="animalType">Release Year</label>-->
+<!--                    <input type="text" name="animalType" id="animalType" th:field="*{animalType}" required>-->
+
+<!--                    <label for="goodGuy">Release Year</label>-->
+<!--                    <input type="checkbox" name="goodGuy" id="goodGuy" th:field="*{goodGuy}" required>-->
+
+<!--                    <button type="submit">Save</button>-->
+<!--                </form>-->
+<!--            </div>-->
+
         </tr>
     </table>
 </div>

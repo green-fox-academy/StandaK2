@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/Style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+<body>
+<table class="table table">
+    <thead class="thead-dark">
+    <tr>
+        <th>Name of Student</th>
+    </tr>
+    </thead>
+    <tr th:each="name : ${studentList}" >
+        <td th:text="${name}"></td>
+    </tr>
+</table>
+</body>
+</html>

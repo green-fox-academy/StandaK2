@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/Style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+<body>
+
+<a href="randombackground"
+   th:href="@{http://localhost:8080/useful/colored}">Colored Background</a><br><br>
+
+<a href="emailvalidation"
+   th:href="@{http://localhost:8080/useful/email?email=is@this.valid}">Email validation (is@this.valid)</a><br>
+<a href="emailvalidation"
+   th:href="@{http://localhost:8080/useful/email?email=not_valid_email.com}">Email validation (not_valid_email.com)</a><br><br>
+<a href="caesardecode"
+   th:href="@{http://localhost:8080/useful/caesar?text=Example&number=1}">Caesar encoder/decoder ("example")</a><br>
+</body>
+</html>
