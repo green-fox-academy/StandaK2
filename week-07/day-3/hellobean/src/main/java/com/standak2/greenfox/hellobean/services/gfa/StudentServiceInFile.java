@@ -54,7 +54,7 @@ public class StudentServiceInFile implements StudentServiceInterface {
         return names.size();
     }
 
-    public boolean checkStudent(String name){
+    public boolean checkStudent(String name) {
         return names.contains(name);
     }
 }

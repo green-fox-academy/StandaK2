@@ -4,12 +4,12 @@ import java.util.List;
 
 public interface StudentServiceInterface {
 
-    public List<String> findAll();
+    List<String> findAll();
 
-    public void save(String student);
+    void save(String student);
 
-    public int count();
+    int count();
 
-    public boolean checkStudent(String name);
+    boolean checkStudent(String name);
 
 }

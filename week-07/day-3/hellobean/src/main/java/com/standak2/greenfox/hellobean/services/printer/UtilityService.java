@@ -24,8 +24,8 @@ public class UtilityService {
         return colors.get(random.nextInt(colors.size()));
     }
 
-    public boolean validateEmail(String email){
-        if(email.contains("@") && email.contains(".")){
+    public boolean validateEmail(String email) {
+        if (email.contains("@") && email.contains(".")) {
             return true;
         } else return false;
     }
@@ -36,9 +36,9 @@ public class UtilityService {
         }
 
         String result = "";
-        for(int i = 0; i < text.length(); i++) {
+        for (int i = 0; i < text.length(); i++) {
             int offset = Character.isUpperCase(text.charAt(i)) ? 'A' : 'a';
-            result += (char)(((int)text.charAt(i) + number - offset) % 26 + offset);
+            result += (char) (((int) text.charAt(i) + number - offset) % 26 + offset);
         }
         return result;
     }

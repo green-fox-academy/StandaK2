@@ -14,26 +14,26 @@ public class PrinterController {
     UtilityService utilityService;
 
     @GetMapping("/useful")
-    public String getListOfUtilities(){
+    public String getListOfUtilities() {
         //model.addAttribute("color", utilityService.randomColor());
         return "index";
     }
 
     @GetMapping("/useful/colored")
-    public String getRandomBackground(Model model){
+    public String getRandomBackground(Model model) {
         model.addAttribute("color", utilityService.randomColor());
         return "randombackground";
     }
 
     @GetMapping("/useful/email")
-    public String getEmailValidation(@RequestParam String email, Model model){
+    public String getEmailValidation(@RequestParam String email, Model model) {
         model.addAttribute("valid", utilityService.validateEmail(email));
         model.addAttribute("email", email);
         return "emailvalidation";
     }
 
     @GetMapping("/useful/caesar")
-    public String CeasarDecode(@RequestParam String text, @RequestParam int number, Model model){
+    public String CeasarDecode(@RequestParam String text, @RequestParam int number, Model model) {
         model.addAttribute("origtext", text);
         model.addAttribute("result", utilityService.caesar(text, number));
         return "ceasardecode";
