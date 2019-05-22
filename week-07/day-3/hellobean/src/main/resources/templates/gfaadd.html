@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -22,6 +22,12 @@
         </form>
         </td>
     </tr>
+    <tr>
+        <td th:text="${check}?'Name is already used':''"></td>
+    </tr>
 </table>
+<form action="/gfa">
+    <input type="submit" value="Home" />
+</form>
 </body>
 </html>

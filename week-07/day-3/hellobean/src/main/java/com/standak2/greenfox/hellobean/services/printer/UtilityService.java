@@ -1,4 +1,4 @@
-package com.standak2.greenfox.hellobean.models;
+package com.standak2.greenfox.hellobean.services.printer;
 
 import org.springframework.stereotype.Service;
 

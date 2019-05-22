@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
 </head>
 <body>
-
+<header th:text="'Total number of students: ' + ${count}"></header><br>
 <a href="gfalist"
    th:href="@{/gfa/list}">Display an unordered list with all the students</a><br>
 <a href="gfaadd"

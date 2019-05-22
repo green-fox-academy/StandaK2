@@ -1,6 +1,6 @@
 package com.standak2.greenfox.hellobean;
 
-import com.standak2.greenfox.hellobean.models.MyColor;
+import com.standak2.greenfox.hellobean.services.printer.MyColor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
@@ -14,6 +14,7 @@ public class HellobeanApplication implements CommandLineRunner {
     private MyColor colorRed;
     private MyColor colorGreen;
 
+
     @Autowired
     public HellobeanApplication (@Qualifier("blue") MyColor colorBlue,
                                 @Qualifier("red") MyColor colorRed,
@@ -21,6 +22,7 @@ public class HellobeanApplication implements CommandLineRunner {
         this.colorBlue = colorBlue;
         this.colorGreen = colorGreen;
         this.colorRed = colorRed;
+
     }
 
     public static void main(String[] args) {
