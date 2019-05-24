@@ -1,7 +1,6 @@
 package com.greenfox.standak2.bankofsimba.models;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class BankAccountList {
@@ -34,12 +33,12 @@ public class BankAccountList {
             }
         }
     }
-
-        public void raiseTheBalanceNew(BankAccount account){
-                    System.out.println(account.getId());
-                    account.raiseTheBalance();
-                    System.out.println(account.getBalance());
-                }
+//
+//        public void raiseTheBalanceNew(BankAccount account){
+//                    System.out.println(account.getId());
+//                    account.raiseTheBalance();
+//                    System.out.println(account.getBalance());
+//                }
 
 //        bankAccountList.stream()
 //                //.map(bankAccount -> bankAccount.getId())

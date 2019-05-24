@@ -13,7 +13,7 @@ public class HellobeanApplication implements CommandLineRunner {
     private MyColor colorBlue;
     private MyColor colorRed;
     private MyColor colorGreen;
-    
+
     @Autowired
     public HellobeanApplication(@Qualifier("blue") MyColor colorBlue,
                                 @Qualifier("red") MyColor colorRed,

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>
+        <a th:href="@{/(name=${fox.name})}">Information</a>
+    </li>
+    <li>
+        <a  th:href="@{/nutritionStore(name=${fox.name})}">Nutrition Store</a>
+    </li>
+    <li>
+        <a  th:href="@{/trickCenter(name=${fox.name})}">Trick Center</a>
+    </li>
+    <li>
+        <a  th:href="@{/actionHistory(name=${fox.name})}">Action History</a>
+    </li>
+</ul>
+<h2 th:text="'Welcome to nutrition store, ' + ${fox.name}">welcome</h2>
+<p>You can change type of food and drinks what is your pet living on!</p>
+
+<h3>Known drinks of your pet:</h3>
+<ul th:each="drink : ${fox.getDrinkList()}">
+    <li th:text="${drink}"></li>
+</ul>
+<br>
+<h3>Known food of your pet:</h3>
+<ul th:each="food : ${fox.getFoodList()}">
+    <li th:text="${food}"></li>
+</ul>
+
+
+<form th:action="@{/nutritionStore(name=${fox.name})}" method="post">
+    <label for="food" >Actual food:</label>
+    <input type="text" name="food" id="food" required>
+    <label for="drink" >Actual drink:</label>
+    <input type="text" name="drink" id="drink" required>
+    <input type="submit" value="CHANGE">
+</form>
+</body>
+</html>

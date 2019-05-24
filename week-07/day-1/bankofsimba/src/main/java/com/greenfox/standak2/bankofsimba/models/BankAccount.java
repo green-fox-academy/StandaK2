@@ -22,7 +22,7 @@ public class BankAccount {
         this.balance = balance;
         this.animalType = animalType;
         this.id = count++;
-        this.goodGuy = true;
+        this.goodGuy = goodGuy;
     }
 
     public BankAccount(String name, int balance, String animalType) {
@@ -30,7 +30,7 @@ public class BankAccount {
         this.balance = balance;
         this.animalType = animalType;
         this.id = count++;
-        this.goodGuy = false;
+        //this.goodGuy = false;
     }
 
     public void raiseTheBalance(){

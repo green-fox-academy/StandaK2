@@ -37,14 +37,6 @@ public class BankController {
         return "htmleception";
     }
 
-//    @RequestMapping(path = "/raise", method = RequestMethod.POST)
-//    public String raiseTheBalance(@ModelAttribute(name="id") int id) {
-//        System.out.println(id + "blabla");
-//        myBankAccountList.raiseTheBalance(id);
-//        //model.addAttribute("account", myBankAccountList.raiseTheBalance(bankAccount));
-//        return "redirect:/showlist";
-//    }
-
     @PostMapping("/raise")
     public String raiseTheBalance(@RequestParam("controllerRef") String accountId) {
         myBankAccountList.raiseTheBalance(Integer.parseInt(accountId));
@@ -54,6 +46,7 @@ public class BankController {
     @PostMapping("/add")
     public String addAccount(@ModelAttribute(name="newAccount") BankAccount newAccount) {
         myBankAccountList.addBankAccount(newAccount);
+        System.out.println(newAccount.isGoodGuy());
         return ("redirect:showlist");
     }
 

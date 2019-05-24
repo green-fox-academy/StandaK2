@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h2> New user login</h2>
+    <p>User with given login name does not exist. Try it again or create a new one below!</p>
+<br>
+    <p>Please fill up form below. You can write more than one food, drink or trick, just use comma separated list.</p>
+    <form action="/createuser" method="post">
+        <label for="name" >Login name of your pet?</label>
+        <input type="text" name="name" id="name" required>
+        <label for="food" >What does your pet eat?</label>
+        <input type="text" food="food" name="food" id="food" required>
+        <label for="drink" >What does your pet drink?</label>
+        <input type="text" drink="drink" name="drink" id="drink" required>
+        <label for="trick" >Does your pet know any trick yet?</label>
+        <input type="text" trick="trick" name="trick" id="trick">
+
+        <input type="submit" value="GO">
+    </form>
+
+</div>
+
+</body>
+</html>
