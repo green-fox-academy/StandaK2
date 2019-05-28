@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>todolist</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+</head>
+<body class="py-4">
+<div class="container">
+
+<h1 class="display-3">TODOS FOR TODAY:</h1><br>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">ACTION</th>
+            <th scope="col">DONE</th>
+            <th scope="col">URGENT</th>
+            <th scope="col">
+                <a href="/?isActive=true">ACTIVE ONLY</a>
+            </th>
+<!--            <th scope="col"> </th>-->
+            <th scope="col"> </th>
+            <th scope="col"> </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="todo : ${todos}">
+            <th scope="row" th:text="${todo.id}"></th>
+            <td th:text="${todo.title}"></td>
+            <div class="material-icons" style="font-size:25px;">
+            <td  th:switch="${todo.done}">
+                <i th:case="true" class="material-icons" style="font-size:30px;">done</i>
+                <i th:case="false" class="material-icons" style="font-size:30px;"> </i>
+            </td>
+            <td  th:switch="${todo.urgent}">
+                <i th:case="true" class="material-icons" style="font-size:30px;">done</i>
+                <i th:case="false" class="material-icons" style="font-size:30px;"> </i>
+            </td>
+            <td></td>
+
+            </div>
+<!--            <td th:text="${todo.done} ? style=""   "></td>-->
+<!--            <td th:text="${todo.urgent}"></td>-->
+<!--            <td>-->
+<!--            <div class="btn-group">-->
+<!--            <td>-->
+<!--                <form method="get"th:action="@{'/' + ${todo.id} + '/view'}">-->
+<!--                    <input type="submit" class="btn btn-dark btn-sm" value="View">-->
+<!--                </form>-->
+<!--            </td>-->
+            <td>
+                <form method="get" th:action="@{'/' + ${todo.id} + '/edit'}">
+                    <input type="submit" class="btn btn-dark btn-sm" value="Edit">
+                </form>
+            </td>
+            <td>
+                <form method="get"th:action="@{'/' + ${todo.id} + '/delete'}">
+                    <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                </form>
+            </td>
+
+<!--            </div>-->
+<!--            </td>-->
+        </tr>
+        </tbody>
+    </table>
+    <a class="material-icons" style="font-size:46px;" href="/add">note_add</a>
+</div>
+</body>
+</html>
