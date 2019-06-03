@@ -1,5 +1,6 @@
 package com.greenfoxacademy.springstart.controlllers;
 
+import com.greenfoxacademy.springstart.models.Greeting;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

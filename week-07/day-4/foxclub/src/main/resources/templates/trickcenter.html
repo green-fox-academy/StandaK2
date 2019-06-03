@@ -4,20 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<ul>
-    <li>
-        <a th:href="@{/(name=${fox.name})}">Information</a>
+<ul class="nav">
+    <li class="nav-item">
+        <a class="nav-link active" th:href="@{/(name=${fox.name})}">Information</a>
     </li>
-    <li>
-        <a  th:href="@{/nutritionStore(name=${fox.name})}">Nutrition Store</a>
+    <li class="nav-item">
+        <a class="nav-link active" th:href="@{/nutritionStore(name=${fox.name})}">Nutrition Store</a>
     </li>
-    <li>
-        <a  th:href="@{/trickCenter(name=${fox.name})}">Trick Center</a>
+    <li class="nav-item">
+        <a class="nav-link active" th:href="@{/trickCenter(name=${fox.name})}">Trick Center</a>
+    </li >
+    <li class="nav-item">
+        <a class="nav-link active" th:href="@{/login(name=${fox.name})}">Log out</a>
     </li>
-    <li>
-        <a  th:href="@{/actionHistory(name=${fox.name})}">Action History</a>
+    <li class="nav-item">
+        <a class="nav-link active" th:href="@{/createuser(name=${fox.name})}">Sign up</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" th:href="@{/actionHistory(name=${fox.name})}">Action History</a>
     </li>
 </ul>
 <h2 th:text="'Welcome to trick center, ' + ${fox.name}">welcome</h2>

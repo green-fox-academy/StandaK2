@@ -18,8 +18,10 @@ public class TodoController {
                        Model model){
         if(isActive){
             model.addAttribute("todos", repo.findAllByDone(false));
+            model.addAttribute("active", true);
         } else{
             model.addAttribute("todos", repo.findAll());
+            model.addAttribute("active", false);
         }
         return "todolist";
     }

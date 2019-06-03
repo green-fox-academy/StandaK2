@@ -1,4 +1,4 @@
-package com.greenfoxacademy.springstart.controlllers;
+package com.greenfoxacademy.springstart.models;
 
 import java.util.concurrent.atomic.AtomicLong;
 

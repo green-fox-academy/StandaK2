@@ -21,7 +21,6 @@ public class FoxController {
 
     @GetMapping("/nutritionStore")
     public String nutritionStore(@RequestParam("name") String name, Model model) {
-        System.out.println(foxClub);
         Fox fox = foxClub.getFoxByName(name);
         model.addAttribute(fox);
         return "nutritionstore";
@@ -50,8 +49,8 @@ public class FoxController {
 
     @PostMapping("/trickCenter")
     public String getValuesFromTrickCenter(@RequestParam String name,
-                                              @RequestParam String trick,
-                                              RedirectAttributes redirectAttributes) {
+                                          @RequestParam String trick,
+                                          RedirectAttributes redirectAttributes) {
         Fox fox = foxClub.getFoxByName(name);
         fox.addTrick(trick);
 

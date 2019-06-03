@@ -27,27 +27,8 @@ public class MainController {
     public String getInformationView(@RequestParam("name") String name, Model model) {
         Fox fox = foxClub.getFoxByName(name);
         model.addAttribute(fox);
-//                model.addAttribute("name", name);
-//                model.addAttribute("foodlist", fox.getFoodList());
-//                model.addAttribute("tricklist", fox.getTrickList());
-//                model.addAttribute("drinklist", fox.getDrinkList());
-//                model.addAttribute("trickcount", fox.getTrickList().size());
                 return "index";
     }
-
-//    @PostMapping("/")
-//    public String getInformationView(@RequestParam String name, Model model) {
-//
-//        Fox fox = foxClub.getFoxByName(name);
-//        model.addAttribute(fox);
-////                model.addAttribute("name", name);
-////                model.addAttribute("foodlist", fox.getFoodList());
-////                model.addAttribute("tricklist", fox.getTrickList());
-////                model.addAttribute("drinklist", fox.getDrinkList());
-////                model.addAttribute("trickcount", fox.getTrickList().size());
-//        return "index";
-//    }
-
 
     @GetMapping("/login")
     public String getLoginName() {
@@ -68,15 +49,7 @@ public class MainController {
     public String createUser() {
         return "createuser";
     }
-//
-//    @GetMapping("/changeuser")
-//    public String changeUser(@ModelAttribute Fox fox, Model model) {
-//        model.addAttribute(fox);
-//        model.addAttribute("foodString");
-//        model.addAttribute("drinkString");
-//        model.addAttribute("trickString");
-//        return "changeuser";
-//    }
+
 
     @PostMapping("/createuser")
     public String getLoginName(@RequestParam String name,

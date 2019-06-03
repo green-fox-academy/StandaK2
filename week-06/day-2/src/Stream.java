@@ -173,7 +173,7 @@ public class Stream {
             wordFrequency.entrySet().stream()
                     .sorted(Map.Entry.comparingByKey())
                     .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
-                    .limit(100)
+                    .limit(2)
                     .forEach(System.out::println);
         } catch (IOException e) {
             System.out.println("can not open files");
