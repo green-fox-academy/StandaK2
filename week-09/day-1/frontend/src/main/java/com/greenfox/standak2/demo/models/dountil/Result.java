@@ -1,4 +1,4 @@
-package com.greenfox.standak2.demo.models;
+package com.greenfox.standak2.demo.models.dountil;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
